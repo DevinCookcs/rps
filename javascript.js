@@ -19,7 +19,7 @@ function playRound(player, computer) {
     var p = player.toLowerCase();
     var c = computer.toLowerCase();
     if (p === c) {
-        return "tie!";
+        return "Tie!";
     }
     if (p === "rock") {
         if (c === "paper") {
@@ -37,24 +37,24 @@ function playRound(player, computer) {
     }
     if (p === "scissors") {
         if (c === "rock") {
-            return "Computer Wins"
+            return "Computer Wins";
         }
         else
-            return "Player Wins"
+            return "Player Wins";
     }
 }
 
-function game() {
+function game(){
     var playerScore = 0;
     var computerScore = 0;
     var rounds = 0;
 
-    while (rounds < 5) {
+    while (rounds < 5){
         var playerChoice = prompt("Select Rock, Paper or Scissors");
         var computerChoice = getComputerChoice();
         console.log("The Computer has selected " + computerChoice);
         var winner = playRound(playerChoice, computerChoice);
-
+        
         switch (winner) {
             case "Player Wins":
                 playerScore++;
