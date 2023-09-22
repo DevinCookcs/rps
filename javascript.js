@@ -1,7 +1,4 @@
-var playerChoice = prompt("Select Rock, Paper or Scissors");
-var computerChoice = getComputerChoice();
-console.log("The Computer has selected " + computerChoice);
-console.log(playRound(playerChoice, computerChoice));
+
 
 function getComputerChoice() {
     var number = Math.floor(Math.random() * 3);
@@ -49,8 +46,8 @@ function game(){
     var computerScore = 0;
     var rounds = 0;
 
-    while (rounds < 5){
-        var playerChoice = prompt("Select Rock, Paper or Scissors");
+    // while (rounds < 5){
+        //var playerChoice = prompt("Select Rock, Paper or Scissors");
         var computerChoice = getComputerChoice();
         console.log("The Computer has selected " + computerChoice);
         var winner = playRound(playerChoice, computerChoice);
@@ -69,9 +66,8 @@ function game(){
                 break;
         }
         console.log(winner);
-    }
+    // }
 
-    return playerScore;
 }
 
 game();
