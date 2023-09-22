@@ -1,1 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    margin: 0 40em;
+}
+
+.title {
+    color: rgb(24, 170, 24);
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.scoreboard {
+    border: 4px solid rgb(24, 170, 24);
+    display: flex;
+    justify-content: center;
+    gap: 10em;
+    padding: 10em 5em;
+    margin-bottom: -1px;
+
+}
+
+.scoreboard .left {
+    color: rgb(24, 170, 24);
+    font-size: 64px;
+}
+
+.scoreboard .right {
+    color: rgb(24, 170, 24);
+    font-size: 64px;
+
+}
+
+.results {
+    color: rgb(24, 170, 24);
+    border: 4px solid rgb(24, 170, 24);
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+
+.selection {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    color: rgb(24, 170, 24);
+    border: 4px solid rgb(24, 170, 24);
+    padding: 2em;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+.rps-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.play-again {
+    color: rgb(24, 170, 24);
+    justify-content: center;
+    align-items: center;
+
+}
