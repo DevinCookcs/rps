@@ -11,9 +11,14 @@ function getComputerChoice() {
         return "scissors";
 }
 
+function getPlayerChoice() {
+    //get player choice from button id
+}
+
 function playRound(player, computer) {
     var p = player.toLowerCase();
     var c = computer.toLowerCase();
+
     if (p === c) {
         return "Tie!";
     }
@@ -40,33 +45,41 @@ function playRound(player, computer) {
     }
 }
 
-function game(){
+
+
+function game() {
     var playerScore = 0;
     var computerScore = 0;
     var rounds = 0;
 
-    // while (rounds < 5){
-        //var playerChoice = prompt("Select Rock, Paper or Scissors");
-        var computerChoice = getComputerChoice();
-        console.log("The Computer has selected " + computerChoice);
-        var winner = playRound(playerChoice, computerChoice);
-        
-        switch (winner) {
-            case "Player Wins":
-                playerScore++;
-                rounds++;
-                break;
-            case "Computer Wins":
-                computerScore++;
-                rounds++;
-                break;
-            case "Tie!":
-                rounds++;
-                break;
-        }
-        console.log(winner);
-    // }
+    var playerChoice = getPlayerChoice();
+    var computerChoice = getComputerChoice();
+    var result = document.querySelector(".round");
+    result.innerHTML = "The Computer has selected " + computerChoice;
+    var winner = playRound(playerChoice, computerChoice);
+
+    switch (winner) {
+        case "Player Wins":
+            playerScore++;
+            document.querySelector(".left").innerHTML = playerScore;
+            rounds++;
+            break;
+        case "Computer Wins":
+            computerScore++;
+            document.querySelector(".right").innerHTML = computerScore;
+            rounds++;
+            break;
+        case "Tie!":
+            rounds++;
+            break;
+    }
+    var result2 = document.querySelector(".result");
+    result2.innerHTML = winner;
 
 }
+
+resetBtn.addEventListener('click', () => location.reload());
+
+rpsButtons.forEach(button => { button.addEventListener('click', getPlayerChoice) });
 
 game();
