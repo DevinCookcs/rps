@@ -60,10 +60,19 @@ body {
 }
 
 button {
-    font-size: 20px;
+    font-size: 24px;
     background-color: black;
     color: rgb(24, 170, 24);
     border: none;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.selection button:hover {
+    background-color: rgb(24, 170, 24);
+    transition: 0.5s;
+    color: white;
+    
 }
 
 .rps-buttons {
