@@ -1,3 +1,17 @@
+const choiceBtn = document.querySelectorAll(".rps-buttons");
+const resetBtn = document.querySelector(".play-again");
+const playerPoints = document.querySelector(".left");
+const computerPoints = document.querySelector(".right");
+var playerScore = 0;
+var computerScore = 0;
+var rounds = 0;
+let playerChoice;
+
+
+resetBtn.addEventListener('click', () => location.reload());
+
+choiceBtn.forEach(button => { button.addEventListener('click', getPlayerChoice) });
+
 
 function getComputerChoice() {
     var number = Math.floor(Math.random() * 3);
@@ -11,52 +25,50 @@ function getComputerChoice() {
         return "scissors";
 }
 
-function getPlayerChoice() {
+function getPlayerChoice(e) {
     //get player choice from button id
+    playerChoice = e.target.textContent;
+    playRound(playerChoice, getComputerChoice());
 }
 
 function playRound(player, computer) {
     var p = player.toLowerCase();
     var c = computer.toLowerCase();
+    var winner;
+
+    var result = document.querySelector(".round");
+    result.innerHTML = "The Computer has selected " + computer;
 
     if (p === c) {
-        return "Tie!";
+        winner = "Tie!";
     }
-    if (p === "rock") {
+    else if (p === "rock") {
         if (c === "paper") {
-            return "Computer Wins";
+            winner = "Computer Wins";
         }
         else
-            return "Player Wins";
+            winner = "Player Wins";
     }
-    if (p === "paper") {
+    else if (p === "paper") {
         if (c === "scissors") {
-            return "Computer Wins";
+            winner = "Computer Wins";
         }
         else
-            return "Player Wins";
+            winner = "Player Wins";
     }
-    if (p === "scissors") {
+    else if (p === "scissors") {
         if (c === "rock") {
-            return "Computer Wins";
+            winner = "Computer Wins";
         }
         else
-            return "Player Wins";
+            winner = "Player Wins";
     }
+    checkWinner(winner);
 }
 
 
 
-function game() {
-    var playerScore = 0;
-    var computerScore = 0;
-    var rounds = 0;
-
-    var playerChoice = getPlayerChoice();
-    var computerChoice = getComputerChoice();
-    var result = document.querySelector(".round");
-    result.innerHTML = "The Computer has selected " + computerChoice;
-    var winner = playRound(playerChoice, computerChoice);
+function checkWinner(winner) {
 
     switch (winner) {
         case "Player Wins":
@@ -75,11 +87,25 @@ function game() {
     }
     var result2 = document.querySelector(".result");
     result2.innerHTML = winner;
-
+    
+    var val = endGame(playerScore, computerScore);
+    switch (val) {
+        case "The Player has won the game":
+            var result2 = document.querySelector(".result");
+            result2.innerHTML = val;
+            break;
+        case "The Computer has won the game":
+            var result2 = document.querySelector(".result");
+            result2.innerHTML = val;
+            break;
+    }
 }
 
-resetBtn.addEventListener('click', () => location.reload());
 
-rpsButtons.forEach(button => { button.addEventListener('click', getPlayerChoice) });
-
-game();
+function endGame(p, c) {
+    if (p === 5) {
+        return "The Player has won the game";
+    }
+    else if (c === 5)
+        return "The Computer has won the game";
+}
